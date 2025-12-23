@@ -4,7 +4,7 @@ name: Azure Static Web App CI/CD
 on:
   push:
     branches:
-      - main 
+      - main
 
 jobs:
   build-and-deploy:
@@ -12,7 +12,8 @@ jobs:
 
     steps:
       # 1️⃣ Checkout the repository
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
       # 2️⃣ Deploy to Azure Static Web Apps
       - name: Deploy to Azure Static Web Apps
@@ -22,14 +23,4 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
           app_location: "/"        # root folder containing index.html
-          output_location: "/"     # root folder (no build folder needed)
-      - name: Debug Secret
-        run: |
-         if [ -z "${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}" ]; then
-         echo "Secret is missing!"
-         exit 1
-         else
-         echo "Secret exists."
-         fi
-
-
+          output_location: "/"     # root folder (no build needed)
