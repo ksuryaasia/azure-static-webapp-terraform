@@ -4,7 +4,7 @@ name: Azure Static Web App CI/CD
 on:
   push:
     branches:
-      - main
+      - main 
 
 jobs:
   build-and-deploy:
@@ -23,3 +23,4 @@ jobs:
           action: "upload"
           app_location: "/"        # root folder containing index.html
           output_location: "/"     # root folder (no build folder needed)
+
