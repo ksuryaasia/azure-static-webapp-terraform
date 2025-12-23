@@ -19,3 +19,4 @@ jobs:
           action: "upload"
           app_location: "/"   # root folder of your static site
           output_location: "/" # root folder (no build folder needed)
+
