@@ -25,25 +25,12 @@ jobs:
             echo "APP secret exists ✅"
           fi
 
-      # 3️⃣ (Optional) Install dependencies and build (for React/Vue/Angular apps)
-      # Uncomment if your app needs a build step
-      # - name: Install Node.js
-      #   uses: actions/setup-node@v3
-      #   with:
-      #     node-version: "18"
-      #
-      # - name: Install dependencies
-      #   run: npm install
-      #
-      # - name: Build app
-      #   run: npm run build
-
-      # 4️⃣ Deploy to Azure Static Web Apps
+      # 3️⃣ Deploy to Azure Static Web Apps
       - name: Deploy to Azure Static Web Apps
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.APP }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
-          app_location: "/"          # Folder containing index.html
-          output_location: "/"       # For static apps, usually same as app_location
+          app_location: "app"          # <-- points to your app folder
+          output_location: "app"       # <-- same as app_location for static site
