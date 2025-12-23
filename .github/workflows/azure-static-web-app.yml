@@ -11,22 +11,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name: Build Project
-        run: |
-          cd frontend        # move into folder with package.json
-          npm install
-          npm run build
-
       - name: Deploy to Azure Static Web Apps
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
-          app_location: "frontend"         # folder containing source code
-          output_location: "frontend/build" # folder containing build output
+          app_location: "/"   # root folder of your static site
+          output_location: "/" # root folder (no build folder needed)
