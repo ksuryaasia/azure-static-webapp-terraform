@@ -20,3 +20,10 @@ jobs:
           app_location: "/"   # root folder of your static site
           output_location: "/" # root folder (no build folder needed)
 
+- name: Check secret
+  run: echo "Secret is set"
+  env:
+    TOKEN: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+
+
+
